@@ -8,88 +8,113 @@
         background-color: #1e8fff;
         text-align: center;
       }   
+.container
+  .loader
+    .loader--dot
+    .loader--dot
+    .loader--dot
+    .loader--dot
+    .loader--dot
+    .loader--dot
+    .loader--text
     
-.lds-spinner {
-  color: official;
-  display: inline-block;
-  position: fixed;
-  right: 50%;
-  top: 50%;
-  width: 400px;
-  height: 400px;
-}
-.lds-spinner div {
-  transform-origin: 40px 40px;
-  animation: lds-spinner 1.2s linear infinite;
-}
-.lds-spinner div:after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 3px;
-  left: 37px;
-  width: 6px;
-  height: 18px;
-  border-radius: 20%;
-  background: #fff;
-}
-.lds-spinner div:nth-child(1) {
-  transform: rotate(0deg);
-  animation-delay: -1.1s;
-}
-.lds-spinner div:nth-child(2) {
-  transform: rotate(30deg);
-  animation-delay: -1s;
-}
-.lds-spinner div:nth-child(3) {
-  transform: rotate(60deg);
-  animation-delay: -0.9s;
-}
-.lds-spinner div:nth-child(4) {
-  transform: rotate(90deg);
-  animation-delay: -0.8s;
-}
-.lds-spinner div:nth-child(5) {
-  transform: rotate(120deg);
-  animation-delay: -0.7s;
-}
-.lds-spinner div:nth-child(6) {
-  transform: rotate(150deg);
-  animation-delay: -0.6s;
-}
-.lds-spinner div:nth-child(7) {
-  transform: rotate(180deg);
-  animation-delay: -0.5s;
-}
-.lds-spinner div:nth-child(8) {
-  transform: rotate(210deg);
-  animation-delay: -0.4s;
-}
-.lds-spinner div:nth-child(9) {
-  transform: rotate(240deg);
-  animation-delay: -0.3s;
-}
-.lds-spinner div:nth-child(10) {
-  transform: rotate(270deg);
-  animation-delay: -0.2s;
-}
-.lds-spinner div:nth-child(11) {
-  transform: rotate(300deg);
-  animation-delay: -0.1s;
-}
-.lds-spinner div:nth-child(12) {
-  transform: rotate(330deg);
-  animation-delay: 0s;
-}
-@keyframes lds-spinner {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+$loader--width: 250px
+$loader-dot--size: 20px
 
+.container
+  height: 100vh
+  width: 100vw
+  font-family: Helvetica
+
+.loader
+  height: $loader-dot--size
+  width: $loader--width
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  margin: auto
+  
+  &--dot
+    animation:
+      name: loader
+      timing-function: ease-in-out
+      duration: 3s
+      iteration-count: infinite
+    height: $loader-dot--size 
+    width: $loader-dot--size 
+    border-radius: 100%
+    background-color: black
+    position: absolute
+    border: 2px solid white
+    
+    &:first-child
+      background-color: #f8e008
+      animation-delay: 0.5s
+    
+    &:nth-child(2)
+      background-color: #c80808
+      animation-delay: 0.4s
+    
+    &:nth-child(3)
+      background-color: #f8e008
+      animation-delay: 0.3s
+    
+    &:nth-child(4)
+      background-color: #258b00
+      animation-delay: 0.2s
+    
+    &:nth-child(5)
+      background-color: #1e8fff
+      animation-delay: 0.1s
+    
+    &:nth-child(6)
+      background-color: #258b00
+      animation-delay: 0s
+  
+  &--text
+    position: absolute
+    top: 200%
+    left: 0
+    right: 0
+    width: 4rem
+    margin: auto
+
+    &:after
+      content: "Cargando"      
+      font-weight: bold
+      animation:
+        name: loading-text
+        duration: 3s
+        iteration-count: infinite
+    
+@keyframes loader
+  15%
+    transform: translateX(0)
+  
+  45%
+    transform: translateX( $loader--width - $loader-dot--size )
+
+  65%
+    transform: translateX( $loader--width - $loader-dot--size )
+  
+  95%
+    transform: translateX(0)
+
+@keyframes loading-text
+  0%
+    content: "Cargando"
+  
+  25%
+    content: "Cargando."
+  
+  50%
+    content: "Cargando.."
+  
+  75%
+    content: "Cargando..."
+    
   </style>
 </head>
 <body>
